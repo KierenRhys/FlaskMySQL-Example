@@ -183,13 +183,26 @@ class DeleteItem(Resource):
         except Exception as e:
             return {'error': str(e)}
 
-api.add_resource(CreateUser, '/CreateUser')
-api.add_resource(AuthenticateUser, '/AuthenticateUser')
-api.add_resource(AddItem, '/AddItem')
-api.add_resource(GetAllItems, '/ListItems')
-api.add_resource(GetOneItem, '/Item')
-api.add_resource(DeleteItem, '/DeleteItem')
-api.add_resource(UpdateItem, '/UpdateItem')
+# api.add_resource(CreateUser, '/CreateUser')
+# api.add_resource(AuthenticateUser, '/AuthenticateUser')
+# api.add_resource(AddItem, '/AddItem')
+# api.add_resource(GetAllItems, '/ListItems')
+# api.add_resource(GetOneItem, '/Item')
+# api.add_resource(DeleteItem, '/DeleteItem')
+# api.add_resource(UpdateItem, '/UpdateItem')
+
+resources = [
+    (CreateUser, '/CreateUser'),
+    (AuthenticateUser, '/AuthenticateUser'),
+    (AddItem, '/AddItem'),
+    (GetAllItems, '/ListItems'),
+    (GetOneItem, '/Item'),
+    (DeleteItem, '/DeleteItem'),
+    (UpdateItem, '/UpdateItem')
+]
+
+for resource in resources:
+    api.add_resource(resource[0], resource[1])
 
 if __name__ == '__main__':
     app.run(debug=True)
